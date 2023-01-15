@@ -1,12 +1,22 @@
 const express = require("express");
-
 const app = express();
-
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-mongoose.connect("mongodb+srv://cluster0.spz2prz.mongodb.net/aroundb", {
-  useNewUrlParser: true,
-});
+mongoose.connect(
+  `mongodb+srv://admin:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.spz2prz.mongodb.net/aroundb`,
+  {
+    useNewUrlParser: true,
+  }
+);
+
+// mongoose.connect("mongodb+srv://cluster0.spz2prz.mongodb.net/aroundb", {
+//   useNewUrlParser: true,
+//   auth: {
+//     user: "admin",
+//     password: "<password>",
+//   },
+// });
 
 // mongoose.connect('mongodb://localhost:27017/aroundb', {
 //   useNewUrlParser: true,
@@ -18,8 +28,6 @@ const rateLimit = require("express-rate-limit");
 
 // app.use(express.json());
 app.use(bodyParser.json());
-
-require("dotenv").config();
 
 const { PORT = 3000 } = process.env;
 
