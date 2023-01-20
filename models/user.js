@@ -9,7 +9,7 @@ const userSchema = new Schema({
     type: String,
     minlength: 2,
     maxlength: 30,
-    default: "Jacques Cousteau",
+    default: "Dark Mode",
   },
   about: {
     type: String,
