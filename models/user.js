@@ -23,7 +23,9 @@ const userSchema = new Schema({
       validator: validateUrl,
       message: "Invalid URL",
     },
-    default: "https://pictures.s3.yandex.net/resources/avatar_1604080799.jpg",
+    default:
+      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    //    default: "https://pictures.s3.yandex.net/resources/avatar_1604080799.jpg",
   },
   email: {
     type: String,
