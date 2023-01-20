@@ -1,26 +1,14 @@
 const express = require("express");
+
 const app = express();
-const mongoose = require("mongoose");
 require("dotenv").config();
+require("./db");
 
-mongoose.connect(
-  `mongodb+srv://admin:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.spz2prz.mongodb.net/aroundb`,
-  {
-    useNewUrlParser: true,
-  }
-);
+// const uri = "mongodb+srv://kay:myRealPassword@cluster0.mongodb.net/test?w=majority";
 
-// mongoose.connect("mongodb+srv://cluster0.spz2prz.mongodb.net/aroundb", {
-//   useNewUrlParser: true,
-//   auth: {
-//     user: "admin",
-//     password: "<password>",
-//   },
-// });
+// close client
+// client.close();
 
-// mongoose.connect('mongodb://localhost:27017/aroundb', {
-//   useNewUrlParser: true,
-// });
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -96,3 +84,22 @@ app.use("*", pageNotFound);
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
+
+// mongoose.connect(
+//   `mongodb+srv://admin:${process.env.MONGO_ATLAS_PASSWORD}@cluster0.spz2prz.mongodb.net/aroundb`,
+//   {
+//     useNewUrlParser: true,
+//   }
+// );
+
+// const url = 'mongodb://localhost:27017/aroundb';
+
+//const url = "mongodb://localhost:27017";
+
+//! prev vertion
+// working with mongoose
+// const mongoose = require("mongoose");
+
+// mongoose.connect('mongodb://localhost:27017/aroundb', {
+//   useNewUrlParser: true,
+// });

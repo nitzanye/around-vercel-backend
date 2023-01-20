@@ -1,21 +1,16 @@
-const { celebrate, Joi } = require('celebrate');
-
-// const { errors } = require('celebrate');
-
-const validator = require('validator');
-
-// const ObjectId = require("mongoose").Types.ObjectId;
+const { celebrate, Joi } = require("celebrate");
+const validator = require("validator");
 
 function validateUrl(string) {
   if (!validator.isURL(string)) {
-    throw new Error('Invalid URL');
+    throw new Error("Invalid URL");
   }
   return string;
 }
 
 function validateEmail(string) {
   if (!validator.isEmail(string)) {
-    throw new Error('Invalid Email');
+    throw new Error("Invalid Email");
   }
   return string;
 }
