@@ -94,8 +94,6 @@ app.listen(PORT, () => {
 
 // const url = 'mongodb://localhost:27017/aroundb';
 
-//const url = "mongodb://localhost:27017";
-
 //! prev vertion
 // working with mongoose
 // const mongoose = require("mongoose");
