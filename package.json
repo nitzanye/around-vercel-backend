@@ -1,23 +1,15 @@
 {
   "name": "around-express",
   "version": "1.0.0",
-  "description": "`/data` — JSON files to temporarily emulate database integration.",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
     "lint": "npx eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nitzanye/around-express.git"
-  },
   "author": "Nitzan Smulevici",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nitzanye/around-express/issues"
-  },
-  "homepage": "https://github.com/nitzanye/around-express#readme",
   "devDependencies": {
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
