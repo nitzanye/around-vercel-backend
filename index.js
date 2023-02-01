@@ -11,7 +11,7 @@ require("./db");
 
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
-const cors = require("cors");
+//const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 
 // app.use(express.json());
@@ -30,17 +30,17 @@ const {
   validateLogin,
 } = require("./middlewares/validations");
 
-// const serverErrorHandler = require("./middlewares/server-error-handler");
+const serverErrorHandler = require("./middlewares/server-error-handler");
 
 // const limiter = rateLimit({
 //   windowMs: 15 * 60 * 1000, // in 15 minutes
 //   max: 100, // you can make a maximum of 100 requests from one IP
 // });
 
-// const userRouter = require("./routes/users");
-// const cardsRouter = require("./routes/cards");
+const userRouter = require("./routes/users");
+const cardsRouter = require("./routes/cards");
 
-// app.use(requestLogger);
+app.use(requestLogger);
 
 // applying the rate-limiter
 // app.use(limiter);
@@ -74,19 +74,19 @@ app.post("/signup", validateUser, createUser);
 app.post("/signin", validateLogin, login);
 
 // authorization
-// app.use(auth);
+app.use(auth);
 
-// app.use("/", userRouter);
-// app.use("/", cardsRouter);
+app.use("/", userRouter);
+app.use("/", cardsRouter);
 
 // // must come after the route handlers and before the error handlers
-// app.use(errorLogger);
+app.use(errorLogger);
 
 // // celebrate error handler
-// app.use(errors());
+app.use(errors());
 
 // // centralized error handler
-// app.use(serverErrorHandler);
+app.use(serverErrorHandler);
 
 // app.use("*", pageNotFound);
 
