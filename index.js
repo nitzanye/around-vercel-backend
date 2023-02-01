@@ -50,8 +50,24 @@ const {
 // enable requests for all routes
 // must come before the route handlers
 
-app.use(cors());
-app.options("*", cors());
+// app.use(cors());
+// app.options("*", cors());
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,Content-Type,Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  // Pass to next layer of middleware
+  if (req.method === "OPTIONS") res.sendStatus(200);
+  else next();
+});
 
 // register and login
 app.post("/signup", validateUser, createUser);
