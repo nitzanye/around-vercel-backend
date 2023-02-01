@@ -67,7 +67,7 @@ app.post("/signin", validateLogin, login);
 // authorization
 // app.use(auth);
 
-app.get("/test", (req, res) => {
+app.get("/", (req, res) => {
   res.send({ ok: true });
 });
 
