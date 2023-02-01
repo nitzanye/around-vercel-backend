@@ -54,15 +54,11 @@ app.use(cors());
 app.options("*", cors());
 
 // register and login
-// app.post("/signup", validateUser, createUser);
-// app.post("/signin", validateLogin, login);
+app.post("/signup", validateUser, createUser);
+app.post("/signin", validateLogin, login);
 
 // authorization
 // app.use(auth);
-
-app.get("/", (req, res) => {
-  res.send({ ok: true });
-});
 
 // app.use("/", userRouter);
 // app.use("/", cardsRouter);
