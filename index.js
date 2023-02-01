@@ -88,7 +88,7 @@ app.use(errors());
 // // centralized error handler
 app.use(serverErrorHandler);
 
-app.use("*", pageNotFound);
+//app.use("*", pageNotFound);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
