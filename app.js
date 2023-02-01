@@ -65,7 +65,11 @@ app.post("/signup", validateUser, createUser);
 app.post("/signin", validateLogin, login);
 
 // authorization
-app.use(auth);
+// app.use(auth);
+
+app.get("/test", (req, res) => {
+  res.send({ ok: true });
+});
 
 app.use("/", userRouter);
 app.use("/", cardsRouter);
