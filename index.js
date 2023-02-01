@@ -12,7 +12,7 @@ require("./db");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 //const cors = require("cors");
-const rateLimit = require("express-rate-limit");
+//const rateLimit = require("express-rate-limit");
 
 // app.use(express.json());
 app.use(bodyParser.json());
@@ -45,7 +45,7 @@ app.use(requestLogger);
 // applying the rate-limiter
 // app.use(limiter);
 
-// app.use(helmet());
+app.use(helmet());
 
 // enable requests for all routes
 // must come before the route handlers
@@ -88,7 +88,7 @@ app.use(errors());
 // // centralized error handler
 app.use(serverErrorHandler);
 
-// app.use("*", pageNotFound);
+app.use("*", pageNotFound);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
