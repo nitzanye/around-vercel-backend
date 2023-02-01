@@ -30,22 +30,22 @@ const {
   validateLogin,
 } = require("./middlewares/validations");
 
-const serverErrorHandler = require("./middlewares/server-error-handler");
+// const serverErrorHandler = require("./middlewares/server-error-handler");
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // in 15 minutes
-  max: 100, // you can make a maximum of 100 requests from one IP
-});
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // in 15 minutes
+//   max: 100, // you can make a maximum of 100 requests from one IP
+// });
 
-const userRouter = require("./routes/users");
-const cardsRouter = require("./routes/cards");
+// const userRouter = require("./routes/users");
+// const cardsRouter = require("./routes/cards");
 
-app.use(requestLogger);
+// app.use(requestLogger);
 
 // applying the rate-limiter
-app.use(limiter);
+// app.use(limiter);
 
-app.use(helmet());
+// app.use(helmet());
 
 // enable requests for all routes
 // must come before the route handlers
@@ -53,16 +53,9 @@ app.use(helmet());
 app.use(cors());
 app.options("*", cors());
 
-// server crash testing
-app.get("/crash-test", () => {
-  setTimeout(() => {
-    throw new Error("Server will crash now");
-  }, 0);
-});
-
 // register and login
-app.post("/signup", validateUser, createUser);
-app.post("/signin", validateLogin, login);
+// app.post("/signup", validateUser, createUser);
+// app.post("/signin", validateLogin, login);
 
 // authorization
 // app.use(auth);
@@ -71,19 +64,19 @@ app.get("/", (req, res) => {
   res.send({ ok: true });
 });
 
-app.use("/", userRouter);
-app.use("/", cardsRouter);
+// app.use("/", userRouter);
+// app.use("/", cardsRouter);
 
-// must come after the route handlers and before the error handlers
-app.use(errorLogger);
+// // must come after the route handlers and before the error handlers
+// app.use(errorLogger);
 
-// celebrate error handler
-app.use(errors());
+// // celebrate error handler
+// app.use(errors());
 
-// centralized error handler
-app.use(serverErrorHandler);
+// // centralized error handler
+// app.use(serverErrorHandler);
 
-app.use("*", pageNotFound);
+// app.use("*", pageNotFound);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
