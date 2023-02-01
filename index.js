@@ -74,7 +74,7 @@ app.post("/signup", validateUser, createUser);
 app.post("/signin", validateLogin, login);
 
 // authorization
-//app.use(auth);
+app.use(auth);
 
 app.use("/", userRouter);
 app.use("/", cardsRouter);
