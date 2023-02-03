@@ -77,8 +77,8 @@ app.post("/signin", validateLogin, login);
 // authorization
 app.use(auth);
 
-app.use("/", userRouter);
-app.use("/", cardsRouter);
+app.use("/users", userRouter);
+app.use("/cards", cardsRouter);
 
 // // must come after the route handlers and before the error handlers
 app.use(errorLogger);
