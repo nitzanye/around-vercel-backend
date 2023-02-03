@@ -15,6 +15,23 @@ const bodyParser = require("body-parser");
 //const rateLimit = require("express-rate-limit");
 
 // app.use(express.json());
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,Content-Type,Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  // Pass to next layer of middleware
+  if (req.method === "OPTIONS") res.sendStatus(200);
+  else next();
+});
+
 app.use(bodyParser.json());
 
 const { PORT = 3000 } = process.env;
@@ -52,22 +69,6 @@ app.use(helmet());
 
 // app.use(cors());
 // app.options("*", cors());
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,Content-Type,Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  // Pass to next layer of middleware
-  if (req.method === "OPTIONS") res.sendStatus(200);
-  else next();
-});
 
 // register and login
 app.post("/signup", validateUser, createUser);
