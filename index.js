@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 // create a server object:
-app.get('/signin', (req, res) => {
+app.post('/signin', (req, res) => {
   const data = { ok: true };
   res.send({ data });
 });
